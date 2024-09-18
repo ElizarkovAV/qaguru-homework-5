@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -24,8 +25,8 @@ public class GithubTests {
                 "developer platform.";
         //act
         open("https://github.com/"); //открыть Github
-        $(byText("Solutions")).hover(); //навести курсор на Solutions
-        $(byText("Enterprise")).click(); //нажать на Enterprise
+        $(byTagAndText("button", "Solutions")).hover(); //навести курсор на Solutions
+        $(byTagAndText("a", "Enterprise")).click(); //нажать на Enterprise
         // asserts
         $("#hero-section-brand-heading").shouldHave(text(expTitle)); //проверка отображения заголовка страницы
     }
